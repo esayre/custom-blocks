@@ -1,0 +1,47 @@
+```{r}
+#| label: load-packages
+#| include: false
+
+##library(tidyverse)
+library(Rfast)
+#library(lorem)
+library(knitr)
+library(stringr)
+library(readxl)
+```
+
+
+```{r}
+#| label: load-functions
+#| include: false
+
+## Handle related articles
+source("../../code/related.R")
+
+tags <- load.metadata(testing=FALSE)
+tops <- tops.all(tags)
+
+##handle dictionary
+source("../../code/dictionary.R")
+
+##handle callouts for case studies
+source("../../code/casestudies.R")
+
+##{{< meta abstract >}} 
+```
+
+:::{.callout-note title="Abstract" appearance="default" icon=false .abstract}
+{{< meta abstract >}}
+:::
+
+:::{.alert .alert-warning }
+### Oh hey! {.alert-heading}
+
+I've been writing this Handbook since 2014. It's time to finish.  In the next few months, you can expect:
+
+* [formatting changes](../../faq.qmd) as I prepare to package the Handbook into book format.
+* content updates I as clean up chapters to make them more coherent
+
+Do you want to [suggest edits](https://zaposa.com/contact) or new chapters for this Handbook? You have until August 1, 2025.
+
+:::

@@ -1,0 +1,187 @@
+\documentclass[
+  letterpaper, 12pt
+]{report}
+
+\input{preamble.tex}
+
+\usepackage{lipsum}
+
+\title{Research: a Practical Handbook}
+\author{Eleanor C Sayre}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\chapter{Todo}
+
+Still to do:
+\begin{itemize}
+\item quarto listings
+\item update all the quarto so it works
+\item Chapters get more headings: abstract, authors, etc
+\item quarto "part" pages
+\item index
+\end{itemize}
+
+\chapter{Let's make boxes}
+
+\section{Use cases}
+
+Needs implementation
+\begin{itemize}
+\item striped: a striped table
+\item pullquote: one short pullquote in a box to highlight it. 
+\begin{itemize}
+\item Has color, but needs its own environment.  
+\end{itemize}
+\item listings that are boxes (e.g. in ToC or parts)
+\end{itemize}
+
+\section{Regular boxes}
+
+I want regular boxes to have: a title, a border, and a background.  Also an icon, large, in the left margin. 
+
+I want other boxes to generally not have icons.  \dict{Boxbox}{boxbox is boxes horizontally next to each other, usually 2.} needs borders but no columnar striping; striped needs borders around everything but not between rows.  Pullquote doesn't need a border, but does need a background. 
+
+\begin{casebox}{Maria}
+This is content
+\end{casebox}
+
+\begin{fyibox}{This is a title for an info box}
+This is content
+\end{fyibox}
+
+\begin{warnbox}{We have a problem}
+This is content
+\end{warnbox}
+
+\begin{exbox}{Try this exercise}
+This is content
+\end{exbox}
+
+\subsection{The generalized regbox environment}
+
+\begin{regbox}{pullquote}{\faQuoteLeft}{pullquote}
+This is content
+\end{regbox}
+
+\section{The boxbox environment}
+
+The boxbox environments make any number of boxes side-by-side (suggest 1, 2, or 3). 
+
+\begin{itemize}
+\item The outer container is "boxbox".   Use outerbox[] to make page width.  Required argument is number of boxes.
+\item The inner boxes are "tcolorbox".
+\item Inner boxes take the boxbox color, which is grey.
+\end{itemize}
+
+By default, boxbox takes up the whole page width.
+\begin{boxbox}{3}
+\begin{tcolorbox}[title=first box] Notice the first row is indented from subsequent rows.  No, I don't know why.\end{tcolorbox}
+\begin{tcolorbox}Whhhhyyy can't rastering make more columns unless it's in a container?!
+\end{tcolorbox}
+\begin{tcolorbox}This is a box with almost nothing in it.\end{tcolorbox}
+\begin{tcolorbox}A box again\end{tcolorbox}
+\begin{tcolorbox}[title=last box]A box at the end\end{tcolorbox}
+\end{boxbox}
+
+You can give it an optional blank first argument to make it take the column width.   
+\begin{boxbox}[]{2}
+\begin{tcolorbox}First box\end{tcolorbox}
+\begin{tcolorbox}[title=second box] Second box \marginnote{Obviously, don't add margin notes if there isn't space for them.}\end{tcolorbox}
+\end{boxbox}
+
+If the optional argument is not blank, it goes back to page.
+\begin{boxbox}[stuff]{2}
+\begin{tcolorbox}First box\end{tcolorbox}
+\begin{tcolorbox}[title=second box] Second box\end{tcolorbox}
+\end{boxbox}
+
+\begin{boxbox}{2}
+\begin{tcolorbox}
+\begin{itemize}
+\item
+  to bring prevalence information to rich qualitative data.
+\item
+  for screening potential interview participants.
+\item
+  to replicate other studies or compare across groups.
+\end{itemize}
+\end{tcolorbox}
+\begin{tcolorbox}
+\begin{itemize}
+\item
+  when you have few participants
+\item
+  if you don't validate them
+\item
+  as a sole source of information in a project.
+\end{itemize}
+\end{tcolorbox}
+\end{boxbox}
+
+
+
+%\begin{outerbox}*
+%
+%\begin{innerbox}[3]{Left}
+%These are three boxes across, using the whole page
+%\end{innerbox}
+%\begin{innerbox}[3]{Center}
+%Please do not mix box widths in the arguments because it's ugly.
+%\end{innerbox}
+%\begin{innerbox}[3]{Right}
+%Notice that you should not use margin notes if you're using the full page width.
+%\end{innerbox}
+%
+%\end{outerbox}
+%
+%
+%\begin{outerbox}
+%
+%\begin{innerbox}{}
+%\lipsum[3]
+%\end{innerbox}
+%\begin{innerbox}{Optional title - leave blank for nothing}
+%\lipsum[2]
+%\end{innerbox}
+%
+%\end{outerbox}
+
+\chapter{Styling those headings}
+
+Chapter headings should be huge and all caps, and the title rule should go under the abstract.  The running header should also update to include the chapter title above the book title: "My chapter (new line) This Book"
+
+\section{Margin notes}
+
+I want them, so here they are.  FYI, the placement requires running LaTeX twice, or maybe three times.   They appear roughly where they should in the paragraph (?), but don't make them too long or something will break. 
+\marginnote{Ooh, check out my marginalia!}
+
+\begin{warnbox}{Too many margin notes}
+If there are too many notes too close together, they will overlap and it will be ugly.  This could be a future fix, but it's more likely to be ignored.
+\end{warnbox} 
+
+\subsection{Dictionary definitions.}
+
+These should make a margin note of what the \dict{definition}{the definition is what the term means} is as well as highlight the term. Future work: include them in an index.
+
+While these can be written inline, the intent is to make the quarto look up definitions in a central database.
+
+\section{Abstract}
+
+I want each chapter to have an abstract that goes at the top of the chapter, under the chapter heading but before the chapter content. Possibly in a slightly narrower box without a border?
+
+\section{Section headings should be large.}
+I want headings to be huge with a title rule.  Generally numbers shown are ok.
+
+\subsection{A subsection}
+
+These should also be large, but they don't need to be bold nor do they need numbers.
+
+\subsubsection{A subsubsection}
+
+largish, italic, no numbers.  
+
+\end{document}

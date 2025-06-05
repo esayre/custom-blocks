@@ -1,0 +1,97 @@
+---
+## top level index page ("home")
+title: "Book test"
+title-block-banner: "images/star-tess-dark.png"
+---
+
+
+
+## Let's test this book.
+
+:::{.fyibox  arguments=""}
+A new FYI box
+:::
+
+:::{.casebox arguments="Maria"}
+custom numbered block case
+:::
+
+:::{.warnbox}
+This is centered?
+:::
+
+
+:::{.callout-note title="note title"}
+This is a callout note.
+:::
+
+
+## Boxes
+
+::::: {.quarto-listing .quarto-listing-container-grid}
+:::: {.list .grid .quarto-listing-cols-2}
+::: {.g-col-1 .card .card-body}
+#### Surveys are a great choice ...
+
+- to bring prevalence information to rich qualitative data.
+- for screening potential interview participants.
+- to replicate other studies or compare across groups.
+:::
+
+::: {.g-col-1 .card .card-body}
+#### Surveys are a poor choice ... 
+
+- when you have few participants
+- if you don't validate them
+- as a sole source of information in a project.
+:::
+::::
+:::::
+
+
+
+:::: {.boxbox}
+::: {.tcolorbox}
+- to bring prevalence information to rich qualitative data.
+- for screening potential interview participants.
+- to replicate other studies or compare across groups.
+:::
+::: {.tcolorbox}
+- when you have few participants
+- if you don't validate them
+- as a sole source of information in a project.
+:::
+::::
+
+These chapters:
+
+- make tacit professional knowledge more explicit, particularly around fundamental practices of research; 
+- are short, friendly, and have actionable exercises;
+- support a wide range of people to become better at their work: students just getting started, new faculty, venerable advisors, casual researchers, and postdocs conceptualizing their first independent research.
+
+The practical fundamentals of doing research are widely applicable across a vast majority of research projects. Some of these practical fundamentals are centered on education research, while others are broadly applicable across many fields of research.  I try to balance broad coverage with brevity.
+
+The [table of contents](articles) for this handbook suggests a reading order.
+
+## Images?
+
+![What do emerging researchers need? Word cloud from several hundred emerging researchers](images/research-needs.png){fig-alt="A word cloud of what emerging researchers need" width="50%"}
+
+In education research, there are also a lot of people who get started without a direct mentor.  As faculty, they might be focused on improving the learning or success of students in their departments; as learners themselves, they might seek to improve learning more broadly for people like them.  
+
+### h3s look like this
+
+They might get started by participating in a [field school](https://peerinstitute.org/), workshop, or conference.  They might transition into education research as a natural extension of their other professional duties, like teaching, running an outreach program, or evaluating programs at their institution.  As someone who works with emerging education researchers, I wrote these articles because people kept asking: what's a good overview of...? how do I...? can you help me learn to...?
+
+#### h4s are this
+
+They might get started by participating in a [field school](https://peerinstitute.org/), workshop, or conference.  They might transition into education research as a natural extension of their other professional duties, like teaching, running an outreach program, or evaluating programs at their institution.  As someone who works with emerging education researchers, I wrote these articles because people kept asking: what's a good overview of...? how do I...? can you help me learn to...?
+
+
+## Limitations
+
+There are always edge cases where this advice won't fit.  This handbook can't possibly handle everything for every project. As your questions and curiosities become more specialized, you'll want to look for more specific resources. 
+
+Also, the practical fundamentals of doing research are independent of the particular tools you use to instantiate your research, so this handbook is not about particular software tools.  
+
+

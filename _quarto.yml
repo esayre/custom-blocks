@@ -1,0 +1,120 @@
+project:
+  type: book
+#  resources:
+#    - "*.qmd"
+#  output-dir: _site # for production and deployment to github, and thence to netlify
+  # output-dir: docs # for staging.  Use "quarto publish netlify" to use.
+  output-dir: _book # for making book things
+  preview:
+    port: 4200
+    browser: true
+  
+book:
+  page-navigation: true
+  page-footer: "Copyright 2007-2025 Eleanor C. Sayre.  This work is licensed via [CC-BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/). Built with [Quarto](https://quarto.org/) and hosted on [github](https://github.com/esayre)."
+  back-to-top-navigation: true
+  downloads: pdf
+  cover-image: images/handbook-cover.png
+  title: "Research: a Practical Handbook"
+  output-file: "Research-a-Practical-Handbook-Sayre"
+  site-url: "https://handbook.zaposa.com"
+  favicon: "/images/handbook.png"
+
+  chapters:
+    - booktest.qmd
+    - index.qmd
+#    - articles/design-projects/index.qmd
+#    - parts/getting-started.qmd
+#    - articles/design-based-research/index.qmd
+#    - faq.qmd 
+
+# Cross-references
+crossref: 
+  chapters: true
+  ref-hyperlink: true
+#  custom: 
+#    - kind: float
+#      key: casestudy
+#      reference-prefix: "Case Study"
+#      latex-env: casestudy
+
+# Filters (for latexing better)
+filters:
+   - latex-environment  # comes from:  quarto add quarto-ext/latex-environment
+#   - custom-numbered-blocks # comes from: quarto add ute/custom-numbered-blocks
+
+# from latex-environment
+environments: [center,casebox,fyibox,warnbox,boxbox,tcolorbox]
+
+# # from custom-numbered-blocks
+# custom-numbered-blocks:
+#   groups:
+#     callouts:
+#       colors: [948bde, 584eab]
+#       boxstyle: foldbox.simple
+#       collapse: false
+#       listin: [cases]
+#       numbered: false
+#     todos: default  
+#   classes:
+#     casestudy:
+#       label: "Case study"
+#       group: callouts
+#       collapse: true
+#     Corollary:
+#       group: callouts
+#     Conjecture:
+#       group: callouts
+#       collapse: true  
+#     Definition:
+#       group: callouts
+#       colors: [d999d3, a01793]
+#     Feature: default
+#     todo:
+#       label: "To do"
+#       colors: [e7b1b4, 8c3236]
+#       group: default
+#       listin: [stilltodo]
+
+format:
+  pdf: 
+    documentclass: report
+    include-in-header: preamble.tex
+#    include-after-body: postamble.tex
+    default-image-extension: png
+    cover-image: images/handbook-cover.png
+    top-level-division: chapter
+#    linestretch: 1.15
+#    links-as-notes: true
+format-links: pdf
+
+# Rendering choices
+editor: source
+freeze: auto
+execute:
+  echo: false
+date-modified: last-modified
+keep-tex: true
+pdf-engine: pdflatex
+
+# Appearance choices
+callout-appearance: simple
+#callout-icon: false
+cap-location: margin
+fig-cap-location: margin
+tbl-cap-location: margin
+reference-location: margin #for footnotes, could be margin or document
+citation-location: document #for citations
+footnotes-hover: true # to hover over footnotes
+title-block-banner: "/images/star-tess-dark.png"
+
+# A unified footer with 
+appendix-style: default
+appendix-cite-as: display
+
+# Authoring choices
+author: 
+  name: 
+   given: "Eleanor C"
+   family: "Sayre"
+#  url: "https://www.zaposa.com"

@@ -1,0 +1,187 @@
+%%%%%%%%%% The ECS preamble for formatting a quarto book
+
+
+% Sans-serif font
+%\usepackage{helvet}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% Serif font
+\usepackage[light]{CrimsonPro}
+\usepackage[T1]{fontenc}
+%% The font package uses mweights.sty which has som issues with the
+%% \normalfont command. The following two lines fixes this issue.
+\let\oldnormalfont\normalfont
+\def\normalfont{\oldnormalfont\mdseries}
+
+% Document sizing and frame
+\usepackage{fancyhdr}
+\topmargin=-.35in
+\headheight=.25in
+\headsep=.25in
+\topskip=0in
+\textheight=8.8in
+\oddsidemargin=-.25in
+\textwidth=5in
+\marginparsep=.16in
+\marginparwidth=2in
+
+% Each page looks Tufte-esque
+\pagestyle{fancy}
+\rhead{DRAFT}
+\chead{}
+\lhead{Research: A Practical Handbook}
+\rfoot{\today}
+\cfoot{\thepage}
+\lfoot{(c) Eleanor C Sayre}
+\author{Eleanor C Sayre}  
+\date{\today}
+
+% Margin notes, small and dark grey
+\usepackage{marginnote}
+%\renewcommand*{\raggedrightmarginnote}{\raggedright}
+\renewcommand*{\marginfont}{\color{black!70} \footnotesize}
+
+% Index.  Use "this is purple \index{purple}" for an entry.
+\usepackage{imakeidx}
+\makeindex[intoc=true, columns=3, columnseprule=true]
+
+% Colors
+\usepackage{xcolor}
+\colorlet{fyi}{cyan}
+\colorlet{case}{violet}
+\colorlet{warning}{orange}
+\colorlet{exercise}{green!50!gray}
+\colorlet{pullquote}{teal}
+\colorlet{boxbox}{gray}
+
+% icons
+\usepackage[fixed]{fontawesome5}
+
+% Header style
+% \titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]
+\usepackage[compact,big,it,nobottomtitles*]{titlesec}
+
+\titleformat{\chapter}[display]{%
+\Huge 
+\color{pullquote} \titlerule*{.} \vspace{.1em}
+\color{fyi} \titlerule*{.} \vspace{.1em}
+\color{case} \titlerule*{.} \vspace{.1em}
+\vspace{1em}
+\bf \color{black}
+ }{\rm Chapter \thechapter}{.5em}
+{}[%
+\vspace{1em}
+\rm
+\color{case} \titlerule*{.} \vspace{.1em}
+\color{fyi} \titlerule*{.} \vspace{.1em}
+\color{pullquote} \titlerule*{.} \vspace{.1em}
+]
+
+\titleformat{\section}[block]{\Large \bf}{\rm \thesection}{.5em}{}[\rm \titlerule*{.}]
+\titleformat{\subsection}[block]{\Large \it}{}{0em}{}[\titlerule]
+\titleformat{\subsubsection}[block]{\large \it}{}{0em}{}{}
+
+%%%%% Boxes
+\usepackage[skins,breakable,raster]{tcolorbox}
+\tcbsetforeverylayer{enhanced,breakable}
+
+%% Regular callout boxes
+%% usage: \begin{regbox}{color}{icon}{This is my title}
+\newenvironment{regbox}[3]{\begin{tcolorbox}[%
+  breakable,
+  colframe=#1, 
+  colbacktitle=#1!40, 
+  colback = #1!5, 
+  coltitle=black,  
+  outer arc=.5em,  
+  arc=.5em,
+  left=1.55em,
+  lefttitle=-.1em,	  
+  bottomtitle=.3em, 
+  toptitle=.5em,
+  title=#2 \textbf{#3}]%
+  }
+{\end{tcolorbox}}
+
+% Case studies
+\newenvironment{casebox}[1]{\begin{regbox}{case}{\faUser}{Case study: #1}}
+{\end{regbox}}
+
+% FYI
+\newenvironment{fyibox}[1]{\begin{regbox}{fyi}{\faInfo}{#1}}
+{\end{regbox}}
+
+% Warning
+\newenvironment{warnbox}[1]{\begin{regbox}{warning}{\faExclamationTriangle}{Warning! #1}}
+{\end{regbox}}
+
+% Exercise
+\newenvironment{exbox}[1]{\begin{regbox}{exercise}{\faPenNib}{#1}}
+{\end{regbox}}
+
+%% Dictionary terms
+\newcommand{\dict}[2]{\tcbox[nobeforeafter, left=0em, right=0em, top=0em, bottom=0em, boxrule=0em, tcbox raise base, colback = teal!10]{#1}
+\marginnote{#2}
+}
+
+%% Boxbox
+% Boxbox has a container (outerbox) of width column or page, then a number of boxes across the outer box. 
+% I don't understand with tcbraster doesn't work unless it's inside an enclosing box, but it doesn't so wtf.
+
+\newenvironment{boxbox}{%[2][raster width=\linewidth]{%
+\begin{tcolorbox}[blankest]
+\begin{tcbraster}[
+%raster columns=#2, 
+raster columns=2,
+raster equal height=rows,
+raster left skip=-.1em,
+colframe=boxbox,
+%enhanced, breakable,
+%IfEmptyTF={#1}{raster width=\linewidth}{raster width=\linewidth+\marginparwidth+.5em}
+raster width=\linewidth+\marginparwidth+.5em
+%title={Box \# \thetcbrasternum},
+]
+}
+{\end{tcbraster}\end{tcolorbox}}
+
+
+%%%%%%  Old stuff, not implemented any more. 
+
+%\NewTColorBox{outerbox}{ s }{%
+%colback=white,
+%before=, after=\hfill, 
+%frame hidden,
+%%grow to left by=1.5em,
+%IfBooleanT={#1}{width=\linewidth+\marginparwidth+.5em},
+%%{width=\linewidth},
+%size=tight, 
+%}
+
+
+%% Outerbox: defaults to column, outerbox* makes page
+%\NewTColorBox{outerbox}{ s }{%
+%colback=white,
+%before=, after=\hfill, 
+%frame hidden,
+%%grow to left by=1.5em,
+%IfBooleanT={#1}{width=\linewidth+\marginparwidth+.5em},
+%%{width=\linewidth},
+%size=tight, 
+%}
+%
+%% Inner box: usage: \begin{innerbox}[numberacross]{title}, default across is 2.
+%% fyi, nested boxes are unbreakable as per tcolorbox docs.
+%\NewTColorBox{innerbox}{ O{2} m }{%
+%colbacktitle=boxbox!40, 
+%coltitle=black, 
+%colback=boxbox!5, 
+%left=.15em, right=.15em,
+%IfValueTF={#1}{width=(\linewidth-4pt)/#1}{width=(\linewidth-4pt)/2},
+%equal height group=AT, 
+%before=, after=\hfill, 
+%fonttitle=\bfseries,
+%IfEmptyF={#2}{adjusted title=#2}
+%}
+
+
+%%%%%%%%%% end The ECS preamble for formatting a book

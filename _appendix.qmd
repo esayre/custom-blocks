@@ -1,0 +1,20 @@
+### Additional topics to consider {.appendix}
+
+::: {.quarto-listing .quarto-listing-container-grid}
+::: {.list .grid .quarto-listing-cols-3}
+
+`r this.tops <- get.tops(this.slug)`
+
+`r build.card(this.tops[1])`
+
+`r build.card(this.tops[2])`
+
+`r build.card(this.tops[3])`
+
+:::
+:::
+
+
+### History {.appendix}
+
+This article was first written on {{< meta date >}}, and last modified on {{< meta date-modified >}}.
