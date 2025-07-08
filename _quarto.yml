@@ -1,82 +1,109 @@
 project:
   type: book
-#  resources:
-#    - "*.qmd"
-#  output-dir: _site # for production and deployment to github, and thence to netlify
-  # output-dir: docs # for staging.  Use "quarto publish netlify" to use.
-  output-dir: _book # for making book things
+#  type: website
   preview:
     port: 4200
     browser: true
-  
+  output-dir: _book # for making book things
+
 book:
   page-navigation: true
   page-footer: "Copyright 2007-2025 Eleanor C. Sayre.  This work is licensed via [CC-BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/). Built with [Quarto](https://quarto.org/) and hosted on [github](https://github.com/esayre)."
   back-to-top-navigation: true
   downloads: pdf
   cover-image: images/handbook-cover.png
-  title: "Research: a Practical Handbook"
-  output-file: "Research-a-Practical-Handbook-Sayre"
-  site-url: "https://handbook.zaposa.com"
-  favicon: "/images/handbook.png"
+  title: "Custom blocks"
+  output-file: "custom-blocks"
 
   chapters:
-    - booktest.qmd
     - index.qmd
-#    - articles/design-projects/index.qmd
-#    - parts/getting-started.qmd
-#    - articles/design-based-research/index.qmd
-#    - faq.qmd 
 
 # Cross-references
 crossref: 
   chapters: true
   ref-hyperlink: true
-#  custom: 
-#    - kind: float
-#      key: casestudy
-#      reference-prefix: "Case Study"
-#      latex-env: casestudy
 
 # Filters (for latexing better)
 filters:
    - latex-environment  # comes from:  quarto add quarto-ext/latex-environment
 #   - custom-numbered-blocks # comes from: quarto add ute/custom-numbered-blocks
+   - custom-blocks # active development
+
+
 
 # from latex-environment
-environments: [center,casebox,fyibox,warnbox,boxbox,tcolorbox]
+environments: [ecswide,ecssidebyside]
+commands: [tcblower]
 
-# # from custom-numbered-blocks
-# custom-numbered-blocks:
-#   groups:
-#     callouts:
-#       colors: [948bde, 584eab]
-#       boxstyle: foldbox.simple
-#       collapse: false
-#       listin: [cases]
-#       numbered: false
-#     todos: default  
-#   classes:
-#     casestudy:
-#       label: "Case study"
-#       group: callouts
-#       collapse: true
-#     Corollary:
-#       group: callouts
-#     Conjecture:
-#       group: callouts
-#       collapse: true  
-#     Definition:
-#       group: callouts
-#       colors: [d999d3, a01793]
-#     Feature: default
-#     todo:
-#       label: "To do"
-#       colors: [e7b1b4, 8c3236]
-#       group: default
-#       listin: [stilltodo]
+# from custom-numbered-blocks
+custom-numbered-blocks:
+  groups:
+    regbox:
+      colors: [666666]
+      faicon: "Bell"
+#      boxstyle: foldbox.simple
+#      collapse: false
+#      numbered: false
+    simplebox: 
+      boxstyle: foldbox.simple
+      collapse: false
+  classes:
+    casestudy:
+      label: "Case study"
+      group: regbox
+      collapse: true
+      colors: [BD33A4] # Byzantine
+      listin: [cases]
+      faicon: "User"
+#      colors: [d999d3, a01793]
+    fyi:
+      label: "FYI"
+      group: regbox
+      colors: [1DACD6] # bright cerulean
+      faicon: "Info"
+    warn:
+      label: "Warning"
+      group: regbox
+      colors: [FF8C00] # Dark orange
+      faicon: "ExclamationTriangle"
+    exercise:
+      label: "Exercise"
+      group: regbox
+      collapse: true
+      colors: [008B8B] # Dark cyan	
+      numbered: true
+      faicon: "PenNib"
+    todo:
+      label: "To do"
+      group: simplebox
+    headless:
+      label: "headless"
+      group: simplebox
+    # Feature: default
+    # todo:
+    #   label: "To do"
+    #   colors: [e7b1b4, 8c3236]
+    #   group: default
+    #   listin: [stilltodo]
 
 format:
+  html:
+    theme: 
+       light: 
+         - yeti
+         - custom.scss
+       dark: 
+         - superhero
+         - custom.scss
+    smooth-scroll: true
+    css: styles.css
+    toc: true
+    citations-hover: true
+    footnotes-hover: true
+    fontsize: 11pt
+    appendix-style: none
+    enable-cssgrid: true
+    page-layout: full
   pdf: 
     documentclass: report
     include-in-header: preamble.tex
@@ -84,8 +111,6 @@ format:
     default-image-extension: png
     cover-image: images/handbook-cover.png
     top-level-division: chapter
-#    linestretch: 1.15
-#    links-as-notes: true
 format-links: pdf
 
 # Rendering choices
@@ -99,7 +124,6 @@ pdf-engine: pdflatex
 
 # Appearance choices
 callout-appearance: simple
-#callout-icon: false
 cap-location: margin
 fig-cap-location: margin
 tbl-cap-location: margin
@@ -117,4 +141,3 @@ author:
   name: 
    given: "Eleanor C"
    family: "Sayre"
-#  url: "https://www.zaposa.com"

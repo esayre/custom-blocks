@@ -1,0 +1,103 @@
+%%%% ---foldboxy preamble ----- %%%%%
+
+\definecolor{fbx-default-color1}{HTML}{c7c7d0}
+\definecolor{fbx-default-color2}{HTML}{a3a3aa}
+
+\definecolor{fbox-color1}{HTML}{c7c7d0}
+\definecolor{fbox-color2}{HTML}{a3a3aa}
+
+%% usage: \begin{regbox}{color}{icon}{This is my title}
+\newenvironment{regbox}[3]{\begin{tcolorbox}[%
+  breakable,
+  colframe=#1,
+  colbacktitle=#1!40,
+  colback = #1!5,
+  coltitle=black,
+  outer arc=.5em,
+  arc=.5em,
+  left=1.55em,
+  lefttitle=-.1em,
+  bottomtitle=.3em,
+  toptitle=.5em,
+  title=#2 \textbf{#3}]%
+  }
+{\end{tcolorbox}}
+
+% regular fbox, icon declared in yaml.
+% #1 = name of callout, #2 = label (e.g. FYI), #3 = title of box (optional, given in quarto)
+\newenvironment{fbx}[3]{\begin{regbox}{#1-color1}{#2}{#3}}
+{\end{regbox}}
+
+
+
+% simple fbox
+% #1 = name of callout, #2 = label (e.g. FYI), #3 = title of box (optional, given in quarto)
+%\newenvironment{fbxSimple}[3]{\begin{regbox}{#1-color1}{}{#2 #3}}
+%{\end{regbox}}
+
+% narrow simple fbox
+%\newenvironment{fbxSimple}[3]{\begin{regbox}{#1-color1}{#2}{#3}}
+%{\end{regbox}}
+\newenvironment{fbxSimple}[3]{\begin{tcolorbox}[%
+  breakable,
+  colframe=#1-color1,
+  colback = #1-color1!5,
+  outer arc=.5em,
+  arc=.5em]
+  %left=1.55em]%
+  }
+  {\end{tcolorbox}}
+
+% boxbox-outer: takes arguments about how many columns, how many across (?). Otherwise invisible.
+% boxbox-inner: Fills up the inner boxes of the boxbox
+
+%%%% ECS code to build a general version. 
+% %% usage: \begin{regbox}{color}{icon}{This is my title}
+% \newenvironment{regbox}[3]{\begin{tcolorbox}[%
+%   breakable,
+%   colframe=#1, 
+%   colbacktitle=#1!40, 
+%   colback = #1!5, 
+%   coltitle=black,  
+%   outer arc=.5em,  
+%   arc=.5em,
+%   left=1.55em,
+%   lefttitle=-.1em,	  
+%   bottomtitle=.3em, 
+%   toptitle=.5em,
+%   title=#2 \textbf{#3}]%
+%   }
+% {\end{tcolorbox}}
+% 
+% % Case studies
+% \newenvironment{casebox}[1]{\begin{regbox}{case}{\faUser}{Case study: #1}}
+% {\end{regbox}}
+% 
+% % FYI
+% \newenvironment{fyibox}[1]{\begin{regbox}{fyi}{\faInfo}{#1}}
+% {\end{regbox}}
+% 
+% % Warning
+% \newenvironment{warnbox}[1]{\begin{regbox}{warning}{\faExclamationTriangle}{Warning! #1}}
+% {\end{regbox}}
+% 
+% % Exercise
+% \newenvironment{exbox}[1]{\begin{regbox}{exercise}{\faPenNib}{#1}}
+% {\end{regbox}}
+
+%%%% original code below
+% % arguments: #1 typelabelnummer: #2 titel: #3
+% \newenvironment{fbx}[3]{\begin{tcolorbox}[enhanced, breakable,%
+% attach boxed title to top*={xshift=1.4pt},
+% boxed title style={boxrule=0.0mm, fuzzy shadow={1pt}{-1pt}{0mm}{0.1mm}{gray}, arc=.3em, rounded corners=east, sharp corners=west}, colframe=#1-color2, colbacktitle=#1-color1, colback = white, coltitle=black,  titlerule=0mm, toprule=0pt, bottomrule=.7pt, leftrule=.3em, rightrule=0pt, outer arc=.3em,  arc=0pt,	 sharp corners = east, left=.5em, bottomtitle=1mm, toptitle=1mm,title=\textbf{#2}\hspace{0.5em}{#3}]}
+% {\end{tcolorbox}}
+% 
+% % boxed environment with right border
+% \newenvironment{fbxSimple}[3]{\begin{tcolorbox}[enhanced, breakable,%
+% attach boxed title to top*={xshift=1.4pt},
+% boxed title style={boxrule=0.0mm, fuzzy shadow={1pt}{-1pt}{0mm}{0.1mm}{gray}, arc=.3em, rounded corners=east, sharp corners=west}, colframe=#1-color2, colbacktitle=#1-color1, colback = white, coltitle=black,  titlerule=0mm, toprule=0pt, bottomrule=.7pt, leftrule=.3em, rightrule=.7pt, outer arc=.3em,  	left=.5em, right=.5em, bottomtitle=1mm, toptitle=1mm,title=\textbf{#2}\hspace{0.5em}{#3}]}
+% {\end{tcolorbox}}
+
+
+
+%%%% --- end foldboxy preamble ----- %%%%%

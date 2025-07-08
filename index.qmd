@@ -4,64 +4,161 @@ title: "Book test"
 title-block-banner: "images/star-tess-dark.png"
 ---
 
+<!-- ## To-do -->
 
+<!-- * handling listings -->
+<!--    * ToC style -->
+<!--    * box style -->
+<!-- * links -->
+<!--    * links within the doc (cross ref) -->
+<!--    * links outside the doc (footnote to references?) -->
+<!--    * cross ref & index for case studies -->
+<!--    * dictionary terms / index -->
+<!-- * boxes -->
+<!--    * DONE! boxes for fyi, cases, warning, exercises -->
+<!--    * boxbox for 2 and 3 across.  -->
+<!--    * boxbox for column and page across. -->
+<!-- * Chapters -->
+<!--    * abstract from the yaml headers to the latex -->
+<!--    * authorship -->
+<!--    * Might be able to get inspiration from the foldbox.lua on this? -->
+<!-- * Parts? as a top level heading? As just a break, but the chapter numbers stay continuous? -->
 
-## Let's test this book.
+<!-- ### CSS? latex headers? -->
 
-:::{.fyibox  arguments=""}
-A new FYI box
+<!-- * margin note sizing for text? -->
+<!-- * DONE! color definitions for boxes -->
+<!-- * chapter & heading styling in pdf -->
+<!-- * striped tables -->
+
+<!-- ## Boxes -->
+
+<!-- ::::: {.quarto-listing .quarto-listing-container-grid} -->
+<!-- :::: {.list .grid .quarto-listing-cols-2} -->
+<!-- ::: {.g-col-1 .card .card-body} -->
+<!-- #### Surveys are a great choice ... -->
+
+<!-- - to bring prevalence information to rich qualitative data. -->
+<!-- - for screening potential interview participants. -->
+<!-- - to replicate other studies or compare across groups. -->
+<!-- ::: -->
+
+<!-- ::: {.g-col-1 .card .card-body} -->
+<!-- #### Surveys are a poor choice ...  -->
+
+<!-- - when you have few participants -->
+<!-- - if you don't validate them -->
+<!-- - as a sole source of information in a project. -->
+<!-- ::: -->
+<!-- :::: -->
+<!-- ::::: -->
+
+<!-- New strategy: define a wide environment, and then put a table in it.  -->
+<!-- Another new strategy: Define an enclosing box and then just put the two inside it, not side-by-side. -->
+<!-- Another new strategy: use tcolorboxes to redefine the baked-in g-col style. -->
+
+<!-- :::{.testbox1 arguments="surveys are a great choice"} -->
+<!-- - to bring prevalence information to rich qualitative data. -->
+<!-- - for screening potential interview participants. -->
+<!-- - to replicate other studies or compare across groups. -->
+<!-- ::: -->
+
+<!-- ::: todo -->
+<!-- - when you have few participants -->
+<!-- - if you don't validate them -->
+<!-- - as a sole source of information in a project. -->
+<!-- ::: -->
+
+## side by side blocks
+:::{.ecssidebyside}
+::: headless
+left?
 :::
 
-:::{.casebox arguments="Maria"}
-custom numbered block case
+[]{.tcblower}
+
+::: headless
+right?
 :::
 
-:::{.warnbox}
-This is centered?
+:::
+
+## Let's test wide blocks
+
+<!-- ::: {.column-margin} -->
+<!-- ::: headless -->
+<!-- this is in the margin? -->
+<!-- ::: -->
+<!-- ::: -->
+
+::: {.ecswide}
+::: headless
+this is the whole page width. 
+
+::: fyi
+fyi inside!
+:::
+::: warn
+and a warning.
+:::
+
+:::
+:::
+
+
+:::{.ecswide}
+
+aspect | `Formative` | `Summative`
+--|----|----
+when | throughout the project | at the end of the project
+intent | learn about processes and interim results | reflect on processes and results
+so that | you can make good choices of how to proceed | you can assess success and generalize for next time
+academic example | grading your students' rough drafts | final grades in a course
+
+: `Formative` and `summative` evaluation {#tbl-form .striped}
+
+:::
+
+## Let's test callout blocks.
+
+::: headless
+this box is headless.
+:::
+
+::: {.casestudy title="case study custom block"}
+A new case study?
+:::
+
+::: fyi
+## fyi, is this a thing?
+
+could be, could be.
+:::
+
+::: {.warn title="Oh Hey!"}
+this is some warning text.
+
+:::headless
+first headless inside
+:::
+
+::: headless
+second headless inside
+:::
+
+:::
+
+::: {.exercise title="please do work!"}
+this is some exercise text.
 :::
 
 
 :::{.callout-note title="note title"}
-This is a callout note.
+This is a callout note using original quarto styling.
 :::
 
 
-## Boxes
 
-::::: {.quarto-listing .quarto-listing-container-grid}
-:::: {.list .grid .quarto-listing-cols-2}
-::: {.g-col-1 .card .card-body}
-#### Surveys are a great choice ...
-
-- to bring prevalence information to rich qualitative data.
-- for screening potential interview participants.
-- to replicate other studies or compare across groups.
-:::
-
-::: {.g-col-1 .card .card-body}
-#### Surveys are a poor choice ... 
-
-- when you have few participants
-- if you don't validate them
-- as a sole source of information in a project.
-:::
-::::
-:::::
-
-
-
-:::: {.boxbox}
-::: {.tcolorbox}
-- to bring prevalence information to rich qualitative data.
-- for screening potential interview participants.
-- to replicate other studies or compare across groups.
-:::
-::: {.tcolorbox}
-- when you have few participants
-- if you don't validate them
-- as a sole source of information in a project.
-:::
-::::
 
 These chapters:
 
@@ -77,21 +174,13 @@ The [table of contents](articles) for this handbook suggests a reading order.
 
 ![What do emerging researchers need? Word cloud from several hundred emerging researchers](images/research-needs.png){fig-alt="A word cloud of what emerging researchers need" width="50%"}
 
-In education research, there are also a lot of people who get started without a direct mentor.  As faculty, they might be focused on improving the learning or success of students in their departments; as learners themselves, they might seek to improve learning more broadly for people like them.  
+In education research, there are also a lot of people who get started without a direct mentor. 
 
-### h3s look like this
+### H3s look like this
 
-They might get started by participating in a [field school](https://peerinstitute.org/), workshop, or conference.  They might transition into education research as a natural extension of their other professional duties, like teaching, running an outreach program, or evaluating programs at their institution.  As someone who works with emerging education researchers, I wrote these articles because people kept asking: what's a good overview of...? how do I...? can you help me learn to...?
+They might get started by participating in a [field school](https://peerinstitute.org/), workshop, or conference.  
 
-#### h4s are this
+#### H4s look like this. 
 
-They might get started by participating in a [field school](https://peerinstitute.org/), workshop, or conference.  They might transition into education research as a natural extension of their other professional duties, like teaching, running an outreach program, or evaluating programs at their institution.  As someone who works with emerging education researchers, I wrote these articles because people kept asking: what's a good overview of...? how do I...? can you help me learn to...?
-
-
-## Limitations
-
-There are always edge cases where this advice won't fit.  This handbook can't possibly handle everything for every project. As your questions and curiosities become more specialized, you'll want to look for more specific resources. 
-
-Also, the practical fundamentals of doing research are independent of the particular tools you use to instantiate your research, so this handbook is not about particular software tools.  
-
+They might transition into education research as a natural extension of their other professional duties.
 
